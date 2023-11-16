@@ -1,13 +1,15 @@
 #include <iostream>
 #include <locale>
+#include <vector>
 #include <cstring>
 #include <fstream>
+
 
 using namespace std;
 
 struct Pessoa {
-	int cpf;
-	string nome;
+    int cpf;
+    string nome;
     int data_nasc;
     string ender;
     string sexo;
@@ -43,19 +45,74 @@ struct Visitante {
     string data_visita_final;
 };
 
-void cadastrarAssociado(){
-	Associado assoc;
-	cout << "Qual o CPF DO Associado?: ";cin>>assoc.cpf;cout<<endl;
-	cout << "Qual a data da associaçao?: ";cin>>assoc.data_assoc;cout<<endl;
-	cout << "Qual o sócio? Proprietario Ou Contribuente?";cin>>assoc.tipo_soc;cout<<endl;
-	
-	for () {
-		
-	}
+vector<Pessoa> pessoas;
+vector<Associado> associados;
+vector<Dependente> dependentes;
+vector<Visitante> visitantes;
+
+void cadastrarAssociado(const Pessoa& pessoa){
 	
 }
 
+void cadastrarDependente(const Pessoa& pessoa){
+	
+}
 
+void cadastrarVisitante(const Pessoa& pessoa){
+	
+}
+
+void cadastrarPessoa(){
+	
+	Pessoa pessoa;
+	
+	cout << "Qual o CPF?: ";
+	cin >> pessoa.cpf;
+	
+	 for (const Pessoa& p : pessoas) {
+        if (p.cpf == pessoa.cpf) {
+            cout << "Pessoa jÃ¡ cadastrada!" << endl;
+            return;
+        }
+    }
+	
+	cout << "Qual o nome: ";cin>>pessoa.nome;
+	cout << "Qual a data de nascimento: ";cin>>pessoa.data_nasc;
+	cout << "Qual o EndereÃ§o: ";cin>>pessoa.ender;
+	cout << "Qual o Sexo M/F: ";cin>>pessoa.sexo;
+	cout << "Qual o telefone: ";cin>>pessoa.tel;
+	cout << "Qual o email: ";cin>>pessoa.email;
+	cout <<endl;
+	cout << "Qual o tipo de pessoa?\n";
+	cout << endl;
+	cout << "1-Associado\n2-Dependente\n3-Visitante\n\n";
+	
+	int op;
+	cout << "OpÃ§ao: ";cin >> op;
+	
+	switch (op){
+        case 1:
+            cadastrarAssociado(pessoa);
+            break;
+        case 2:
+            cadastrarDependente(pessoa);
+            break;
+        case 3:
+            cadastrarVisitante(pessoa);
+            break;
+        default:
+            cout << "Escolha invalida!.\n\n";
+	}
+}
+
+
+void relatorioDependenteAssociado(){
+	
+}
+
+void relatorioVisitaAssociados(){
+	
+}
 
 int main (){
 	setlocale(LC_ALL, "portuguese");
@@ -65,45 +122,35 @@ int main (){
 	{
 		/*MENU PRINCIPAR*/
         cout << "MENU PRINCIPAL!!"<<endl;
-        cout << "1-Cadastro e manutenção de dados de associados"<<endl;
-        cout << "2-Cadastro e manutenção de dados dependentes"<<endl;
-        cout << "3-Cadastro e manutenção de dados visitante"<<endl;
-        cout << "4-Relatório de dependentes/associados"<<endl;
-        cout << "5-Relátorio de visitas por associado"<<endl;
-        cout << "6-Sair"<<endl;
-        cout << "Escolha sua opção: ";
+		cout << "1-Cadastro uma pessoa"<<endl;
+        cout << "2-RelatÃ³rio de dependentes/associados"<<endl;
+        cout << "3-RelÃ¡torio de visitas por associado"<<endl;
+        cout << "4-Sair"<<endl;
+        cout << "Escolha sua opÃ§Ã£o: ";
         cin>>op;
         cout << endl;
         
         switch (op){
         	
-			case 1:
-				cadastrarAssociados();
-				break;
+        	case 1:
+        		cadastrarPessoa();
+        		break;
 			
 			case 2:
-				cadastrarDependentes();
-				break;
-			
-			case 3:
-				cadastrarVisitantes();
-				break;
-			
-			case 4:
 				relatorioDependenteAssociado();
 				break;
 			
-			case 5:
+			case 3:
 				relatorioVisitaAssociados();
 				break;
 			
-			case 6:
+			case 4:
 				cout << "Fechando O Programa, Obrigado!\n\n";
 				return 0;
 				break;
 			
 			default:
-				cout << "Opcão Invalida!\n\n";
+				cout << "OpcÃ£o Invalida!\n\n";
 				break;
 		}
 	}
